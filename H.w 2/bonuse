@@ -6,7 +6,7 @@ public class Main
     
 	public static void main(String[] args) {
 	    int flag=0;
-	     double i= 1;
+	     double i= 0;
 	     Scanner temp = new Scanner(System.in);
 	     int Player_Score=0;
 	     int Pc_Score=0;
@@ -77,24 +77,30 @@ public class Main
             if(Player_Role==Comp_Role)
             {
                 Player_Score++;
-                System.out.println("congratulations you won one a point your point total is "+Player_Score);
-                System.out.println("and the computers score is "+Pc_Score);
+                System.out.println("congratulations you won one  point your point total is "+Player_Score);
+                System.out.println(", the computers score is "+Pc_Score);
             }
             else
             {
                   Pc_Score++;
-                System.out.println("the computer won this round and he won 1 point  "+Pc_Score);
-                System.out.println("and your score  is "+Player_Score);
+                System.out.println("the computer won this round and he won 1 point for a total of "+Pc_Score);
+                System.out.println(", your score  is "+Player_Score);
             }
 		     }
 		     }
-		     double range= 1/(high - low);
-		     double odds = Math.pow(range,i);
-		      System.out.println("odds are   "+odds);
-		    if(Player_Score!=10)
-		    {
-		        
-		    }
+		     System.out.println("game ended on round "+i+"!");
+		      double range= (double)high - (double)low;
+		     range = 1/(range);
+		     double odds = Math.pow(range,(i));
+		     if(Pc_Score==10)
+		     {
+		         System.out.println("dont feel to bad the odds of you winning with the same number of rounds are: "+odds);
+		     }
+		     else
+		     {
+		         System.out.println("WOW, you won the odds of you winning vs my advance super AI are with the same number of odds: "+odds);
+		     }
+	
 		    
 		    
 		    
