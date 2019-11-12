@@ -25,6 +25,11 @@ public class Main {
                System.out.println("please enter number "+(i+1)+"/"+"10"); 
                 int num =temp.nextInt();
                 arr1[i] = num ;
+                if(arr1[i]>=101||arr1[i]<=9)
+                {
+                     System.out.println("the number "+arr1[i]+" is not beetween 10 to 100 please try again! ");
+                     i--;
+                }
             
           }
           System.out.println("please enter the special number");
@@ -46,7 +51,7 @@ public class Main {
              else 
              {
                  
-                System.out.println("the special number is not the rando array !!! booo");  
+                System.out.println("the special number is not in the rando array !!! booo");  
              }
              Arrays.sort(arr1, 0, 9);
                Arrays.sort(arr2, 0, 9);
