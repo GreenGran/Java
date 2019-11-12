@@ -1,0 +1,59 @@
+import java.util.Scanner;
+public class Main
+{
+    public static int getRandomNumber(int min, int max) {
+    return (int) ((Math.random() * (max - min)) + min);  }
+    
+	public static void main(String[] args) {
+	    
+	    
+	     Scanner temp = new Scanner(System.in);
+	     int Player_Score=0;
+	     int Pc_Score=0;
+		System.out.println("please enter the lowist number for the computer to role :");
+		    int low =temp.nextInt();
+		      while(low<0)
+		     {
+		         System.out.println("the low point cannot be lower then 0 please re-enter a new one:");
+		           low =temp.nextInt();
+		     }
+		    		System.out.println("please enter the hightist number for the computer to role :");
+		    int high =temp.nextInt();
+		     while(high<0)
+		     {
+		         System.out.println("the high point cannot be lower then 0 please re-enter a new one:");
+		         high =temp.nextInt();
+		     }
+		     while(high==0)
+		     {
+		         System.out.println("the high point cannot be 0 please re-enter a new one:");
+		           high =temp.nextInt();
+		     }
+		 
+		     while(low>high)
+		    {
+		        System.out.println("the low point cannot be highter then the hight point please re-enter the low point :");
+		          low =temp.nextInt();
+		    }
+		    
+		    
+		     System.out.println("please enter your choose your number and see if you manage to get lucky 10 times in a row:");
+		     for(int i=0;i<10;i++)
+		     {
+		         
+		    int Comp_Role=getRandomNumber(low, high);
+            int Player_Role =temp.nextInt();
+            if(Player_Role==Comp_Role)
+            {
+                Player_Score++;
+                System.out.println("congratulations you one a point your point total is "+Player_Score);
+                System.out.println("and the computers score is "+Pc_Score);
+            }
+            
+		     }
+		    
+		    
+		    
+		    
+	}
+}
