@@ -6,7 +6,7 @@ public class Main
     
 	public static void main(String[] args) {
 	    int flag=0;
-	    
+	     double i= 1;
 	     Scanner temp = new Scanner(System.in);
 	     int Player_Score=0;
 	     int Pc_Score=0;
@@ -60,23 +60,43 @@ public class Main
 		    }
 		  
 		     System.out.println("please enter your choose your number and see if you manage to get lucky 10 times in a row:");
-		     for(int i=0;i<10;i++)
+		     while(Player_Score<10 && Pc_Score<10)
 		     {
-		         
+		        
+		         System.out.println("start of round "+i+"!");
+		         i++;
 		    int Comp_Role=getRandomNumber(low, high);
             int Player_Role =temp.nextInt();
+            if(Player_Role>high || Player_Role<low)
+            {
+                System.out.println("please re-enter a new number this one is not vailed , its no low or to high ");
+                
+            }
+            else
+            {
             if(Player_Role==Comp_Role)
             {
                 Player_Score++;
-                System.out.println("congratulations you one a point your point total is "+Player_Score);
+                System.out.println("congratulations you won one a point your point total is "+Player_Score);
                 System.out.println("and the computers score is "+Pc_Score);
             }
-            
+            else
+            {
+                  Pc_Score++;
+                System.out.println("the computer won this round and he won 1 point  "+Pc_Score);
+                System.out.println("and your score  is "+Player_Score);
+            }
 		     }
-		    
+		     }
+		     double range= 1/(high - low);
+		     double odds = Math.pow(range,i);
+		      System.out.println("odds are   "+odds);
+		    if(Player_Score!=10)
+		    {
+		        
+		    }
 		    
 		    
 		    
 	}
 }
-
