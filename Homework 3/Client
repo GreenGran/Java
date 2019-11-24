@@ -1,10 +1,39 @@
 
 public class Client {
-String Name;
-int Id;
-int Balance;
+String Name="un-avliable";
+int Id=0;
+int Balance=0;
 
-
+public void setName(String _Name)
+{
+	this.Name=_Name;
+}
+public void setId(int _Id)
+{
+	Id=_Id;
+}
+public void setBalance(int _Balance)
+{
+	Balance=_Balance;
+}
+public String getName() 
+{
+	return Name;
+}
+public int getId() 
+{
+	return Id;
+}
+public int getBalance() 
+{
+	return Balance;
+}
+public Client ()
+{
+	this.Name="un-avliable";
+	this.Id=0;
+	this.Balance = 0;
+}
 public  Client(String _Name ,int _Id) {
 	Name=_Name;
 	Id=_Id;
