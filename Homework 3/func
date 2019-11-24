@@ -37,8 +37,118 @@ public int Board() {
 	return i;
 }
 
-public void AddNameId(String name,int Id)
+public int findEmpty(Client x[])
 {
+	int i ;
+	for(i=0;i<=10;i++)
+	{
+		if(x[i].getName()=="un-avliable")
+		{
+			return i;
+		}
+	}
+	return -1; //will not work with phython
+
+}
+public void addNoBalance(Client x[],int i,String _Name ,int _Id)
+{
+	x[i].setName(_Name);
+	x[i].setId(_Id);
+	x[i].setBalance(100);
+}
+public void addWithBalance(Client x[],int i,String _Name ,int _Id,int _Balance)
+{
+	x[i].setName(_Name);
+	x[i].setId(_Id);
+	x[i].setBalance(_Balance);
+}
+public void adder(Client x[],int index)
+{
+	
+	int i;
+	 System.out.println("Press 1 to add an account with out Balance ");
+	    System.out.println("Press 2 to add an account with Balance ");
+	  
+	do {
+
+	    try {
+	        i= scanner.nextInt();
+
+	        if (i >= 1 && i <= 2) break;
+
+	    } catch (InputMismatchException e) {
+	    } finally {
+	    	scanner.nextLine();
+	    }
+
+	    System.out.println("Press 1 to add an account with out Balance ");
+	    System.out.println("Press 2 to add an account with Balance ");
+	
+	} while (true);
+	if(i==1)
+	{
+		String name = new String();
+		name ="un-avliable";
+				while(name=="un-avliable")
+				{
+		System.out.println("Press enter name  ");
+	       	name= scanner.nextLine();
+	       	if(name=="un-avliable")
+	       	{
+	       		System.out.println("please enter another name 'un-avliable' is not avilable");
+	       	}
+				}
+	int id = 0;
+	while(id==0)
+	{
+System.out.println("Press enter id  ");
+	id= scanner.nextInt();
+	if(id==0)
+	{
+		System.out.println("please enter another id '0' is not avilable");
+	}
+	}
+	addNoBalance(x, index, name, id);
+	
+	}
+	if(i==2)
+	{
+		String name = new String();
+		name ="un-avliable";
+				while(name=="un-avliable")
+				{
+		System.out.println("Press enter name  ");
+	       	name= scanner.nextLine();
+	       	if(name=="un-avliable")
+	       	{
+	       		System.out.println("please enter another name 'un-avliable' is not avilable");
+	       	}
+				}
+	int id = 0;
+	while(id==0)
+	{
+System.out.println("Press enter id  ");
+	id= scanner.nextInt();
+	if(id==0)
+	{
+		System.out.println("please enter another id '0' is not avilable");
+	}
+	for(int t=0;t<10;t++)
+	{
+		if(id==x[t].getId()&&x[t].getId()!=0)
+		{
+			System.out.println("please enter a new id , this one is taken . contact support if this is a case of id thifth");
+			id=0;
+		}
+	}
+	}
+	int Balance;
+	System.out.println("Press enter Balance  ");
+	Balance = scanner.nextInt();
+	addWithBalance(x, index, name, id,Balance);
+	
+	}
 	
 }
 }
+
