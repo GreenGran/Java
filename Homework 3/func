@@ -1,0 +1,44 @@
+import java.util.InputMismatchException;
+import java.util.Scanner;
+public class func 
+{
+	 Scanner scanner = new Scanner(System.in);
+	
+public int Board() {
+	int i ;
+	
+	System.out.println("please select one of the following");
+	System.out.println("1: Add now account");
+	System.out.println("2: Delete by name ");
+	System.out.println("3: Delete by Id ");
+	System.out.println("4: Update account balance by name ");
+	System.out.println("5: print all name in bank  ");
+
+	do {
+
+	    try {
+	        i= scanner.nextInt();
+
+	        if (i >= 1 && i <= 5) break;
+
+	    } catch (InputMismatchException e) {
+	    } finally {
+	    	scanner.nextLine();
+	    }
+
+	    System.out.print("Input must be a number between 1 and 5: ");
+		System.out.println("please select one of the following");
+		System.out.println("1: Add now account");
+		System.out.println("2: Delete by name ");
+		System.out.println("3: Delete by Id ");
+		System.out.println("4: Update account balance by name ");
+		System.out.println("5: print all name in bank  ");
+	} while (true);
+	return i;
+}
+
+public void AddNameId(String name,int Id)
+{
+	
+}
+}
