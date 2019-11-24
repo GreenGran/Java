@@ -1,4 +1,34 @@
 
-public class Starter {
+public class Starter 
+{
+	 public void begginer()
+	 {
  Client[] ClientBase = new Client[10];
+ for(int j=0;j<10;j++)
+ {
+    ClientBase[j]=new Client();
+ }
+ System.out.println(ClientBase[2].getName());
+	int i=0;
+	int index;
+	boolean flag = true;
+	func obj = new func();
+	while(flag)
+	{
+	i=obj.Board();
+	System.out.println(i);
+	switch(i) {
+	  case 1:
+	  index=obj.findEmpty(ClientBase);
+	  if(index==-1)
+	  {
+		  System.out.println("no room avilable please delete some people");
+		  break;
+	  }
+	  obj.adder(ClientBase, index);
+	    break;
+	}
+	}
+	 }
+
 }
