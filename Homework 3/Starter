@@ -1,0 +1,4 @@
+
+public class Starter {
+ Client[] ClientBase = new Client[10];
+}
