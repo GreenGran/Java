@@ -1,0 +1,19 @@
+
+public class Client {
+String Name;
+int Id;
+int Balance;
+
+
+public  Client(String _Name ,int _Id) {
+	Name=_Name;
+	Id=_Id;
+	Balance = 100;
+}
+public  Client(String _Name ,int _Id,int _Balance) {
+	Name=_Name;
+	Id=_Id;
+	Balance = _Balance;
+}
+
+}
