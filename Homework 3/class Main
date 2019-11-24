@@ -3,10 +3,8 @@ public class Main {
 
 	public static void main(String args[]) 
 	{
-		int i;
-		func obj = new func();
-		i=obj.Board();
-		System.out.println(i);
+	Starter start = new Starter();
+	start.begginer();
 		
 	}
 }
