@@ -1,0 +1,47 @@
+package hotel_homework;
+
+import java.util.Scanner;  
+public class Starter {
+	Scanner scanner = new Scanner(System.in);
+	 Standerd standerd = new Standerd(false,0);  
+	 family Family = new family(false,0);  
+	 sweet Sweet = new sweet(false,0);  
+	 Delux delux = new Delux(false,0);  
+
+	 
+	 public void Opener()
+	 {
+	 
+		 System.out.println(standerd.className()+" room: ");
+		 standerd.callCleaningLady();
+		 standerd.callRepairMan();
+		 standerd.IfVaicant();
+		 System.out.println("the max number of people for the "+standerd.className()+" room is:"+standerd.Maxoccupied());
+		
+		 
+		 
+		 System.out.println("\n\n\n");
+		 System.out.println( Family.className()+" room: ");
+		 Family.callCleaningLady();
+		 Family.callRepairMan();
+		 Family.IfVaicant();
+		 System.out.println("the max number of people for the "+ Family.className()+" room is:"+ Family.Maxoccupied());
+		 
+		 System.out.println("\n\n\n");
+		 System.out.println( Sweet.className()+" room: ");
+		 Sweet.callCleaningLady();
+		 Sweet.callRepairMan();
+		 Sweet.IfVaicant();
+		 System.out.println("the max number of people for the "+ Sweet.className()+" room is:"+ Sweet.Maxoccupied());
+		 
+		 System.out.println("\n\n\n");
+		 System.out.println( delux.className()+" room!: ");
+		 delux.callCleaningLady();
+		 delux.callRepairMan();
+		 delux.IfVaicant();
+		 System.out.println("the max number of people for the "+ delux.className()+" room is:"+ delux.Maxoccupied());
+		 
+		 
+	 }
+	 
+}
