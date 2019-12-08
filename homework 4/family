@@ -1,0 +1,11 @@
+package hotel_homework;
+
+public class family extends Rooms  implements Service {
+	
+	
+
+	public family(boolean vac,int maxpeople) {
+		super(vac,6);
+	}
+
+}
