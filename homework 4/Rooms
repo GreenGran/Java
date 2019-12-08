@@ -1,0 +1,69 @@
+package hotel_homework;
+
+
+public class Rooms {
+  
+   boolean vaicant =false;
+   
+   int maxpeople = 0;
+   
+   public String className() {
+       Class c = getClass();
+       return  c.getSimpleName() ;
+   }
+   public Rooms(boolean vac,int maxpeople)
+   {
+	   
+	   vaicant = vac;
+	  
+	   this.maxpeople = maxpeople;
+   }
+   
+   public void callCleaningLady()
+   {
+	     
+	   System.out.println("send cleaning lady to the "+className()+" room  now "+"\n");
+	   
+	
+   }
+   public void callRepairMan()
+   {
+	   System.out.println("send Repair man to the "+className()+" room  now "+"\n");
+	
+   }
+
+   public boolean IfVaicant()
+   {
+	   System.out.println("the room is empty. ");
+	   return vaicant;
+   }
+   public void  ChangeToVaicant()
+   {
+	   if(!vaicant)
+	   {
+		   System.out.println("already vaicant. ");
+	   }
+	   else {
+	   vaicant=false;
+	   }
+	   System.out.println("now vaicant. ");
+   }
+   public void ChangeToOccupied()
+   {
+	   if(vaicant)
+	   {
+		   System.out.println("already occupied. ");
+	   }
+	   else
+	   {
+	   vaicant=true;
+	   System.out.println("now occupied. ");
+	   }
+   }
+   public int Maxoccupied()
+   {
+	   System.out.println("the max number of peaple that can stay in a "+className()+" type room is"+maxpeople);
+	   return maxpeople;
+   }
+	
+}
