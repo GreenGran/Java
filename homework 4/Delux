@@ -1,0 +1,12 @@
+package hotel_homework;
+
+public class Delux extends Rooms implements Service  {
+	
+	public Delux(boolean vac,int maxpeople) {
+		super(vac,2);
+		
+	}
+	
+
+	
+}
