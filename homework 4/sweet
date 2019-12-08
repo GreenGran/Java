@@ -1,0 +1,12 @@
+package hotel_homework;
+
+public class sweet  extends Rooms  implements Service{
+	
+	public sweet(boolean vac,int maxpeople) {
+		super(vac,6);
+		
+	}
+	
+	
+
+}
