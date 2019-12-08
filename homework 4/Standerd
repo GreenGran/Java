@@ -1,0 +1,14 @@
+package hotel_homework;
+
+public class Standerd extends Rooms implements Service  {
+	
+	
+
+public Standerd( boolean vac,int maxpeople) 
+{
+		super( vac,4);
+		
+	}
+
+
+}
