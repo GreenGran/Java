@@ -1,0 +1,6 @@
+package hotel_homework;
+
+public interface Service {
+	 public void callCleaningLady();
+	 public void callRepairMan();
+}
