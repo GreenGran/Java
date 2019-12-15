@@ -3,7 +3,7 @@ import java.util.Scanner;
 public class func 
 {
 	 Scanner scanner = new Scanner(System.in);
-	
+	int[] idDupChack = new int[10];
 public int Board() {
 	int i ;
 	
@@ -11,28 +11,31 @@ public int Board() {
 	System.out.println("1: Add now account");
 	System.out.println("2: Delete by name ");
 	System.out.println("3: Delete by Id ");
-	System.out.println("4: Update account balance by name ");
-	System.out.println("5: print all name in bank  ");
+	System.out.println("4:display number of clients in bank system ");
+	System.out.println("5: Update account  by name ");
+	System.out.println("6: print all name in bank  ");
+	System.out.println("7: sort bank accounts by name value and display after sort, for biggist to lowist  ");
 
 	do {
 
 	    try {
 	        i= scanner.nextInt();
 
-	        if (i >= 1 && i <= 5) break;
+	        if (i >= 1 && i <= 7) break;
 
 	    } catch (InputMismatchException e) {
 	    } finally {
 	    	scanner.nextLine();
 	    }
 
-	    System.out.print("Input must be a number between 1 and 5: ");
-		System.out.println("please select one of the following");
+	    System.out.println("please select one of the following");
 		System.out.println("1: Add now account");
 		System.out.println("2: Delete by name ");
 		System.out.println("3: Delete by Id ");
-		System.out.println("4: Update account balance by name ");
-		System.out.println("5: print all name in bank  ");
+		System.out.println("4:display number of clients in bank system ");
+		System.out.println("5: Update account  by name ");
+		System.out.println("6: print all name in bank  ");
+		System.out.println("7: sort bank accounts by name value and display after sort, for biggist to lowist  ");
 	} while (true);
 	return i;
 }
@@ -40,9 +43,9 @@ public int Board() {
 public int findEmpty(Client x[])
 {
 	int i ;
-	for(i=0;i<=10;i++)
+	for(i=0;i<10;i++)
 	{
-		if(x[i].getName()=="un-avliable")
+		if(x[i].getName().equals("un-avliable"))
 		{
 			return i;
 		}
@@ -63,6 +66,7 @@ public void addWithBalance(Client x[],int i,String _Name ,int _Id,int _Balance)
 	x[i].setBalance(_Balance);
 }
 public void adder(Client x[],int index)
+
 {
 	
 	int i;
@@ -89,23 +93,47 @@ public void adder(Client x[],int index)
 	{
 		String name = new String();
 		name ="un-avliable";
-				while(name=="un-avliable")
-				{
-		System.out.println("Press enter name  ");
-	       	name= scanner.nextLine();
-	       	if(name=="un-avliable")
-	       	{
-	       		System.out.println("please enter another name 'un-avliable' is not avilable");
-	       	}
-				}
+		while(name=="un-avliable")
+		{
+System.out.println("Press enter name  ");
+   	name= scanner.nextLine();
+   	if(name=="un-avliable")
+   	{
+   		System.out.println("please enter another name 'un-avliable' is not avilable");
+   	}
+		}
 	int id = 0;
 	while(id==0)
 	{
-System.out.println("Press enter id  ");
-	id= scanner.nextInt();
+System.out.println("please enter id  ");
+	
+	do {
+
+	    try {
+	        id= scanner.nextInt();
+
+	        if (id >= 1 && id <= 9999999) break;
+
+	    } catch (InputMismatchException e) {
+	    } finally {
+	    	scanner.nextLine();
+	    }
+
+	    System.out.println("Id must be a number and be between 1 and 9999999 ");
+	    
+	
+	} while (true);
 	if(id==0)
 	{
 		System.out.println("please enter another id '0' is not avilable");
+	}
+	for(int t=0;t<10;t++)
+	{
+		if(id==x[t].getId()&&x[t].getId()!=0)
+		{
+			System.out.println("please enter a new id , this one is taken . contact support if this is a case of id thifth");
+			id=0;
+		}
 	}
 	}
 	addNoBalance(x, index, name, id);
@@ -128,7 +156,22 @@ System.out.println("Press enter id  ");
 	while(id==0)
 	{
 System.out.println("Press enter id  ");
-	id= scanner.nextInt();
+do {
+
+    try {
+        id= scanner.nextInt();
+
+        if (id >= 1 && id <= 9999999) break;
+
+    } catch (InputMismatchException e) {
+    } finally {
+    	scanner.nextLine();
+    }
+
+    System.out.println("Id must be a number and be between 1 and 9999999 ");
+    
+
+} while (true);
 	if(id==0)
 	{
 		System.out.println("please enter another id '0' is not avilable");
@@ -144,11 +187,332 @@ System.out.println("Press enter id  ");
 	}
 	int Balance;
 	System.out.println("Press enter Balance  ");
-	Balance = scanner.nextInt();
+	do {
+
+	    try {
+	    	Balance= scanner.nextInt();
+
+	        if (Balance >= -999999999 && Balance <= 999999999) break;
+
+	    } catch (InputMismatchException e) {
+	    } finally {
+	    	scanner.nextLine();
+	    }
+
+	    System.out.println("Balance must be a number and be between -999999999 and 999999999 ");
+	    
+
+	} while (true);
+
 	addWithBalance(x, index, name, id,Balance);
 	
 	}
 	
 }
+
+public int nameFinder(Client x[],String _Name)
+{
+ int index=0;
+ int multipleFlag=0;
+ for(int i=0;i<10;i++)
+ {
+	
+
+	 if (x[i].getName().equals(_Name))
+	 {
+		 
+		 index=i;
+		 multipleFlag+=1;
+		
+	 }
+	
+		 
+ }
+
+
+ if(multipleFlag==1)
+ {
+	 return index;
+ 
+ }
+ if(multipleFlag==0)
+ {
+	 return -1;
+ 
+ }
+ return -2;
 }
+public void sameNameDelete(Client x[],String _Name)
+
+{
+	System.out.println("more then one account was found with the same name ");
+	System.out.println("please choose via the numbers the one you want ");
+	int[] arr = new int[10];
+	int count = 0;
+	int nameChosen;
+	for (int i = 0;i<10;i++)
+	{   
+		
+		if (x[i].getName().equals(_Name))
+		{
+			arr[count]=i;
+			count++;
+		}
+		
+			
+	}
+	for(int j=0;j<count;j++)
+	{
+		System.out.println((j+1)+":"+x[arr[j]].getName()+"  id:"+x[arr[j]].getId());
+	}
+	do {
+
+	    try {
+	    	nameChosen= scanner.nextInt();
+
+	        if (nameChosen >= 1 && nameChosen <= count) break;
+
+	    } catch (InputMismatchException e) {
+	    } finally {
+	    	scanner.nextLine();
+	    }
+
+	    System.out.println("you must choose with in the range 1 to "+count);
+	   
+	
+	} while (true);
+	System.out.println("the account "+x[nameChosen].getName()+" with the Id:"+x[nameChosen].getId());
+	System.out.println("has been deleted");
+	x[arr[nameChosen-1]].setName("un-avliable");
+	x[arr[nameChosen-1]].setId(0);
+	x[arr[nameChosen-1]].setBalance(0);
+	
+
+}
+public void sameNameUpdate(Client x[],String _Name)
+{
+	System.out.println("more then one account was found with the same name ");
+	System.out.println("please choose via the numbers the one you want ");
+	int[] arr = new int[10];
+	int count = 0;
+	int nameChosen;
+	for (int i = 0;i<10;i++)
+	{   
+		
+		if (x[i].getName().equals(_Name))
+		{
+			arr[count]=i;
+			count++;
+		}
+		
+			
+	}
+	for(int j=0;j<count;j++)
+	{
+		System.out.println((j+1)+":"+x[arr[j]].getName()+"  id:"+x[arr[j]].getId());
+	}
+	do {
+
+	    try {
+	    	nameChosen= scanner.nextInt();
+
+	        if (nameChosen >= 1 && nameChosen <= count) break;
+
+	    } catch (InputMismatchException e) {
+	    } finally {
+	    	scanner.nextLine();
+	    }
+
+	    System.out.println("you must choose with in the range 1 to "+count);
+	   
+	
+	} while (true);
+    int choosePath=0;
+    System.out.println("choose what metrice do you with to update");
+    System.out.println("1:Change name");
+    System.out.println("2:Change Id");
+    System.out.println("3:Change Balance");
+	do {
+
+	    try {
+	    	choosePath= scanner.nextInt();
+
+	        if (choosePath >= 1 && choosePath <= 3) break;
+	        System.out.println("must choose 1 , 2 or 3");
+	    } catch (InputMismatchException e) {
+	    } finally {
+	    	scanner.nextLine();
+	    }
+	} while (true);
+    if(choosePath==1) {
+    	System.out.println("plase choose new name");
+    	String tempName = new String();
+    	tempName = "un-avliable";
+		while(tempName=="un-avliable")
+		{
+
+tempName= scanner.nextLine();
+   	if(tempName=="un-avliable")
+   	{
+   		System.out.println("please enter another name 'un-avliable' is not avilable");
+   	}
+		}
+    	x[arr[choosePath-1]].setName(tempName);
+    	
+    	
+    }
+ if(choosePath==2) 
+ {
+    int tempId;
+    int dupChack=1;
+    System.out.println("please enter new id  ");
+    do {
+
+        try {
+        	tempId= scanner.nextInt();
+        	dupChack=1;
+           for(int k=0 ; k<10; k++)
+           {
+        	   if(x[k].getId()==tempId)
+        	   {
+        		   dupChack=0;
+        	   }
+           }
+        	
+            if (tempId >= 1 && tempId <= 9999999 && dupChack==1) break;
+
+        } catch (InputMismatchException e) {
+        } finally {
+        	scanner.nextLine();
+        }
+        if(dupChack==0)
+        {
+        	System.out.println("you have used an id that is already taken , contact support ");
+        }
+        else
+        {
+        System.out.println("Id must be a number and be between 1 and 9999999 ");
+        }
+        
+
+    } while (true);
+	 x[arr[choosePath-1]].setId(tempId);
+  }
+ if(choosePath==3)
+ {
+	 int tempBalance;
+	 System.out.println(" please enter new Balance . must be a number and be between -999999999 and 999999999 ");
+	   
+		do {
+
+		    try {
+		    	tempBalance= scanner.nextInt();
+
+		        if (tempBalance >= -999999999 && tempBalance <= 999999999) break;
+
+		    } catch (InputMismatchException e) {
+		    } finally {
+		    	scanner.nextLine();
+		    }
+
+		    System.out.println("new Balance must be a number and be between -999999999 and 999999999 ");
+		    
+
+		} while (true);
+
+	x[arr[choosePath-1]].setBalance(tempBalance);
+ }
+ 
+	
+}
+public static int compareStrings(String s1, String s2) {
+    int comparison = 0;
+    int c1, c2;
+    for(int i = 0; i < s1.length() && i < s2.length(); i++) {
+        c1 = (int) s1.toLowerCase().charAt(i);   
+        c2 = (int) s2.toLowerCase().charAt(i);  
+        comparison = c1 - c2;   
+
+        if(comparison != 0)    
+            return comparison;
+    }
+    if(s1.length() > s2.length())    
+        return 1;//s1 is bigger
+    else if (s1.length() < s2.length())
+        return -1;//s2 is bigger
+    else
+        return 0;// both strings are the same
+}
+
+public void reduceByName(Client x[])//unfinished
+{
+  String tempString = new String();
+ 
+		for(int i=0;i<10;i++)
+		{
+			for(int j=i+1;j<10;j++)
+			{
+				if(x[i].getName().equals("un-avliable")&& !(x[j].getName().equals("un-avliable")))
+				{
+				tempString=x[i].getName();
+				
+				x[i].setName(x[j].getName());
+				x[j].setName(tempString);
+				j=100;
+				}
+			}
+		}
+}
+public void sortByName(Client x[])// unfinished
+{
+	reduceByName(x);
+	int tempIndex;
+	String tempString = new String();
+	int tempId=0;
+	int tempBalance=0;
+	for(int i=0 ;i <10;i++)
+	{
+		tempIndex =-1;
+		tempString=x[i].getName();
+		for(int j = i+1; j<10;j++)
+		{
+			if(-1==compareStrings(tempString , x[j].getName()))
+			{
+				tempIndex = j;
+				tempString=x[j].getName();
+				tempId=x[j].getId();
+				tempBalance=x[j].getBalance();
+			}
+		}
+		if(tempIndex!= -1)
+		{
+		x[tempIndex].setName(x[i].getName());
+		x[tempIndex].setId(x[i].getId());
+		x[tempIndex].setBalance(x[i].getBalance());
+		x[i].setName(tempString);
+		x[i].setId(tempId);
+		x[i].setBalance(tempBalance);
+		}
+		
+		
+	}
+}
+public int accountCount(Client x[])
+{
+	int count=0;
+	for(int i=0; i<10;i++)
+	{
+		if(!(x[i].getName().equals("un-avliable")))
+		{
+	   count++;
+		}
+	}
+	if(count>0)
+	{
+		return count;
+	}
+	return -1;
+}
+}
+
 
