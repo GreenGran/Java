@@ -1,6 +1,10 @@
-
+import java.util.InputMismatchException;
+import java.util.Scanner;
 public class Starter 
 {
+	Scanner scanner = new Scanner(System.in);
+	String deleteName= new String();
+	int Flag=0;
 	 public void begginer()
 	 {
  Client[] ClientBase = new Client[10];
@@ -8,27 +12,253 @@ public class Starter
  {
     ClientBase[j]=new Client();
  }
- System.out.println(ClientBase[2].getName());
+ 
 	int i=0;
+	int y=0;
 	int index;
 	boolean flag = true;
 	func obj = new func();
 	while(flag)
 	{
 	i=obj.Board();
-	System.out.println(i);
+	
+	 
+	
 	switch(i) {
 	  case 1:
+		  
+			  
 	  index=obj.findEmpty(ClientBase);
-	  if(index==-1)
+	  if( index==-1)
 	  {
 		  System.out.println("no room avilable please delete some people");
 		  break;
 	  }
+	 
 	  obj.adder(ClientBase, index);
 	    break;
+	  case 2:
+		  System.out.println("please enter the account's name you wish to delete");
+		  deleteName= scanner.nextLine();
+		 int j=obj.nameFinder(ClientBase, deleteName);
+		 if(j>=0&&j<=9)
+		 {
+			 System.out.println("account "+ClientBase[j].getName()+" has been deleted");
+			 ClientBase[j].setName("un-avliable");
+			 ClientBase[j].setId(0);
+			 ClientBase[j].setBalance(0);
+			
+		 }
+		 if(j==-1)
+		 {
+			 System.out.println("the name "+deleteName+"was not found please enter an key to");
+			 System.out.println("go back to the menu");
+			 
+			scanner.nextLine();
+		 }
+		 if(j==-2)
+		 {
+			 obj.sameNameDelete(ClientBase,deleteName);
+		 }
+		
+		  break;
+	     case 3:
+	    	 int idNum;
+	    	 System.out.println("please enter the Id you wish to delete");
+	    	 do {
+
+	    		    try {
+	    		        idNum= scanner.nextInt();
+
+	    		        if (idNum >= 1 && idNum <= 9999999) break;
+
+	    		    } catch (InputMismatchException e) {
+	    		    } finally {
+	    		    	scanner.nextLine();
+	    		    }
+
+	    		    System.out.println("Id must be a number and be between 1 and 9999999 ");
+	    		    
+	    		
+	    		} while (true);
+	    	 int mark=-1;
+	    	 for(int t=0;t<10;t++)
+	    	 {
+	    		 if(ClientBase[t].getId()==idNum)
+	    		 {
+	    			 mark=t;
+	    		 }
+	    	 }
+	    	 if(mark==-1)
+	    	 {
+	    		 System.out.println("no account with that Id was found , are are re-diracted to the menu ");
+	    	 }
+	    	 else
+	    	 {
+	    		 ClientBase[mark].setName("un-avliable");
+	    		 ClientBase[mark].setId(0);
+	    		 ClientBase[mark].setBalance(0);
+	    	 }
+	    	  break;
+	    	  
+	     case 4:
+	    	  int count =obj.accountCount(ClientBase);
+	    	  if(count==-1)
+	    	  {
+	    		  System.out.println("no accounts found");
+	    	  }
+	    	  else
+	    	  {
+	    	  System.out.println("the number of clients in the bank is "+count+"/10");
+	    	  }
+	    	 break;
+	     case 5:
+	    	 System.out.println("Please enter the account name you wish to update");
+	    	 String tempName = new String();
+	    	 tempName= scanner.nextLine();
+	    	
+	    	 int iIndex=0;
+	    	 for( y=0;y<10;y++)
+	    	 {
+	    		 
+	    		 if(ClientBase[y].getName().equals(tempName))
+	    		 {
+	    			 Flag++;
+	    			 iIndex=y;
+	    		 }
+	    	 }
+	    	 System.out.println(Flag);
+	    	 
+	    	 if(Flag==0)
+	    	 {
+	    		 System.out.println("no account with that name was found");
+	    		 break;
+	    		 
+	    	 }
+	    	 if(Flag==1)
+	    	 {
+	    		
+	    	    int choosePath=0;
+	    	    System.out.println("choose what metrice do you with to update");
+	    	    System.out.println("1:Change name");
+	    	    System.out.println("2:Change Id");
+	    	    System.out.println("3:Change Balance");
+	    		do {
+
+	    		    try {
+	    		    	choosePath= scanner.nextInt();
+
+	    		        if (choosePath >= 1 && choosePath <= 3) break;
+	    		        System.out.println("must choose 1 , 2 or 3");
+	    		    } catch (InputMismatchException e) {
+	    		    } finally {
+	    		    	scanner.nextLine();
+	    		    }
+	    		} while (true);
+	    	    if(choosePath==1) {
+	    	    	System.out.println("plase choose new name");
+	    	    	String TempName = new String();
+	    	    	TempName = "un-avliable";
+	    			while(TempName=="un-avliable")
+	    			{
+	    	System.out.println("Press enter name  ");
+	    	TempName= scanner.nextLine();
+	    	   	if(TempName=="un-avliable")
+	    	   	{
+	    	   		System.out.println("please enter another name 'un-avliable' is not avilable");
+	    	   	}
+	    			}
+	    	    	ClientBase[iIndex].setName(TempName);
+	    	    	break;
+	    	    	
+	    	    	
+	    	    }
+	    	 if(choosePath==2) 
+	    	 {
+	    	    int tempId;
+	    	    System.out.println("plase choose new Id");
+	    	    do {
+
+	    	        try {
+	    	        	tempId= scanner.nextInt();
+
+	    	            if (tempId >= 1 && tempId <= 9999999) break;
+
+	    	        } catch (InputMismatchException e) {
+	    	        } finally {
+	    	        	scanner.nextLine();
+	    	        }
+
+	    	        System.out.println("Id must be a number and be between 1 and 9999999 ");
+	    	        
+
+	    	    } while (true);
+	    	   
+	    	    ClientBase[iIndex].setId(tempId);
+	    	    break;
+	    	  }
+	    	 if(choosePath==3)
+	    	 {
+	    		 int tempBalance;
+	    		 do {
+
+	    			    try {
+	    			    	tempBalance= scanner.nextInt();
+
+	    			        if (tempBalance >= -999999999 && tempBalance <= 999999999) break;
+
+	    			    } catch (InputMismatchException e) {
+	    			    } finally {
+	    			    	scanner.nextLine();
+	    			    }
+
+	    			    System.out.println("new Balance must be a number and be between -999999999 and 999999999 ");
+	    			    
+
+	    			} while (true);
+	    		
+	    		    ClientBase[iIndex].setBalance(tempBalance);
+	    		    break;
+	    	 }
+	    	 
+	    	 }
+	    	 if(Flag>1)
+	    	 {
+	    		 obj.sameNameUpdate(ClientBase, tempName);
+	    	 }
+	    	 break;
+	     case 6:
+	    	 int ifNoNamFound=0;
+	    	 for(int I=0;I<10;I++)
+	    	 {
+	    		 if(!(ClientBase[I].getName().equals("un-avliable")))
+	    		 {
+	    			 System.out.println((I+1)+":"+ClientBase[I].getName());
+	    			 ifNoNamFound++;
+	    		 }
+	    	 }
+	    	 if( ifNoNamFound==0)
+	    	 {
+	    		 System.out.println("no names found , bank system is empty");
+	    	 }
+	    	 break;
+	    	 
+	     case 7:
+	    	 obj.sortByName(ClientBase);
+	    	 for(int I=0;I<10;I++)
+	    	 {
+	    		
+	    		 
+	    			 System.out.println((I+1)+":"+ClientBase[I].getName());
+	    		 
+	    	 }
+	    	 break;
+	
 	}
+	
+	
 	}
 	 }
-
 }
+
+
